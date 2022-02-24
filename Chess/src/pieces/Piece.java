@@ -1,6 +1,7 @@
 package pieces;
 
-import java.util.List;
+import java.util.Collection;
+
 import board.Board;
 import board.Move;
 
@@ -20,5 +21,5 @@ public abstract class Piece
 		return this.pieceAlliance;
 	}
 	
-	public abstract List<Move> calculateLehalMoves(final Board board);
+	public abstract Collection<Move> calculateLehalMoves(final Board board);
 }
