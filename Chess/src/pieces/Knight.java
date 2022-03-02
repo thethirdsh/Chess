@@ -8,6 +8,8 @@ import spals.shaded.com.google.common.collect.ImmutableList;
 import board.Board;
 import board.BoardUtils;
 import board.Move;
+import board.Move.MajorMove;
+import board.Move.AttackMove;
 import board.Tile;
 
 public class Knight extends Piece 
@@ -20,7 +22,7 @@ public class Knight extends Piece
 		super(piecePosition, pieceAlliance);
 	}
 	
-	public Collection<Move> calculateLehalMoves(Board board) 
+	public Collection<Move> calculateLehalMoves(final Board board) 
 	{
 		
 		final List<Move> legalMoves = new ArrayList<>();
@@ -40,7 +42,7 @@ public class Knight extends Piece
 				
 				if(!candidateDestinationTile.isTileOccupied())
 				{
-					legalMoves.add(new Move());
+					legalMoves.add(new MajorMove(board , this , candidateDestinationCoordinate));
 				}
 				else
 				{
@@ -49,7 +51,7 @@ public class Knight extends Piece
 					
 					if(this.pieceAlliance != pieceAlliance)
 					{
-						legalMoves.add(new Move());
+						legalMoves.add(new AttackMove(board , this , candidateDestinationCoordinate , pieceAtDestination));
 					}
 				}
 			}
